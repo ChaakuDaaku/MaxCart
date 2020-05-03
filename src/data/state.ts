@@ -7,12 +7,12 @@ export const initialState: AppState = {
         hasSeenTutorial: false,
         darkMode: false,
         isLoggedIn: false,
+        menuEnabled: true,
         loading: false
     },
     data: {
         dataset: { dataset: [] } as any,
         cart: [],
-        menuEnabled: true,
         loading: false
     }
 }

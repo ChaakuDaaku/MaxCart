@@ -87,7 +87,7 @@ export default connect<{}, StateProps, {}>({
     mapStateToProps: (state) => ({
         darkMode: state.user.darkMode,
         isAuthenticated: state.user.isLoggedIn,
-        menuEnabled: state.data.menuEnabled
+        menuEnabled: state.user.menuEnabled
     }),
     mapDispatchToProps: ({
         setDarkMode

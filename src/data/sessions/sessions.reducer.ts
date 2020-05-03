@@ -3,9 +3,6 @@ import { SessionsActions } from './sessions.actions'
 
 export const sessionReducer = (state: ConfState, action: SessionsActions): ConfState => {
     switch (action.type) {
-        case 'set-menu-enabled': {
-            return { ...state, menuEnabled: action.menuEnabled}
-        }
         case 'set-conf-loading': {
             return { ...state, loading: action.isLoading };
         }

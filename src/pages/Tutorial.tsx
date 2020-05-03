@@ -6,7 +6,7 @@ import './Tutorial.scss';
 import { connect } from '../data/connect';
 import { RouteComponentProps } from 'react-router';
 import { setHasSeenTutorial } from '../data/user/user.actions';
-import { setMenuEnabled } from '../data/sessions/sessions.actions';
+import { setMenuEnabled } from '../data/user/user.actions';
 
 interface OwnProps extends RouteComponentProps {};
 

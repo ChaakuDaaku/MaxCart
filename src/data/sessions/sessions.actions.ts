@@ -9,11 +9,6 @@ export const loadItemData = () => async (dispatch: React.Dispatch<any>) => {
   dispatch(setLoading(false));
 }
 
-export const setMenuEnabled = (menuEnabled: boolean) => ({
-    type: 'set-menu-enabled',
-    menuEnabled
-} as const);
-
 export const setLoading = (isLoading: boolean) => ({
   type: 'set-conf-loading',
   isLoading
@@ -40,7 +35,6 @@ export const removeFromCart = (itemId: number) => ({
 } as const);
 
 export type SessionsActions = 
-    | ActionType<typeof setMenuEnabled>
     | ActionType<typeof setLoading>
     | ActionType<typeof setData>
     | ActionType<typeof setSearchText>

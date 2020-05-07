@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { IonContent, IonPage, IonHeader, IonToolbar, IonButtons, IonButton, IonSlides, IonSlide, IonIcon, useIonViewWillEnter } from '@ionic/react';
+import { IonContent, IonPage, IonHeader, IonToolbar, IonButtons, IonButton, IonSlides, IonSlide, IonIcon } from '@ionic/react';
 import { arrowForward } from 'ionicons/icons'
 
 import './Tutorial.scss';
@@ -21,10 +21,6 @@ const Tutorial: React.FC<TutorialProps> = ({ history, setHasSeenTutorial, setMen
     const [showSkip, setShowSkip] = useState(true);
     const slideRef = useRef<HTMLIonSlidesElement>(null);
 
-    useIonViewWillEnter(() => {
-        setMenuEnabled(false);
-    });
-
     const startApp = async () => {
         await setHasSeenTutorial(true);
         await setMenuEnabled(true);
@@ -45,7 +41,7 @@ const Tutorial: React.FC<TutorialProps> = ({ history, setHasSeenTutorial, setMen
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
-                <IonSlides ref={slideRef} onIonSlideWillChange={handleSlideChangeStart} pager={false}>
+                <IonSlides ref={slideRef} onIonSlideWillChange={handleSlideChangeStart} pager={true}>
                     <IonSlide>
                         <img src="assets/img/ica-slidebox-img-1.png" alt="" className="slide-image"/>
                         <h2 className="slide-title">

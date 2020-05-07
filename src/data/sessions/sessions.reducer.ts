@@ -7,7 +7,7 @@ export const sessionReducer = (state: ConfState, action: SessionsActions): ConfS
             return { ...state, loading: action.isLoading };
         }
         case 'set-conf-data': {
-            return { ...state, ...action.data };
+            return { ...state, ...action.data};
         }
         case 'set-search-text': {
             return { ...state, searchText: action.searchText };

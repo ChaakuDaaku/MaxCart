@@ -12,6 +12,7 @@ export const initialState: AppState = {
     },
     data: {
         dataset: { dataset: [] } as any,
+        cardsDataset: {cardsDataset: [] as any},
         cart: [],
         loading: false
     }

@@ -1,4 +1,4 @@
-import { getUserData, setIsLoggedInData, setUsernameData, setHasSeenTutorialData, setDarkModeData, setMenuEnabledData } from "../dataApi";
+import { getUserData, setIsLoggedInData, setUsernameData, setHasSeenTutorialData, setDarkModeData, setMenuEnabledData, setAccountTypeData } from "../dataApi";
 import { UserState } from "./user.state";
 import { ActionType } from "../../utils/types";
 
@@ -6,7 +6,7 @@ export const loadUserData = () => async (dispatch: React.Dispatch<any>) => {
     dispatch(setLoading(true));
     const data = await getUserData();
     dispatch(setData(data));
-    data.darkMode ? dispatch(setDarkMode(true)) : dispatch(setDarkMode(false))
+    data.darkMode ? dispatch(setDarkMode(false)) : dispatch(setDarkMode(true))
     dispatch(setMenuEnabled(true));
     dispatch(setLoading(false));
 }
@@ -51,17 +51,28 @@ export const setHasSeenTutorial = (hasSeenTutorial: boolean) => async (dispatch:
 } 
 
 export const setDarkMode = (darkMode: boolean)=> async (dispatch: React.Dispatch<any>) => {
-  await setDarkModeData(true);
+  await setDarkModeData(darkMode);
   return ({
     type: 'set-dark-mode',
     darkMode
   } as const);
 }
 
-export const setMenuEnabled = (menuEnabled: boolean) => ({
-    type: 'set-menu-enabled',
-    menuEnabled
-} as const);
+export const setMenuEnabled = (menuEnabled: boolean) => async (dispatch: React.Dispatch<any>) => {
+  await setMenuEnabledData(menuEnabled);
+  return ({
+      type: 'set-menu-enabled',
+      menuEnabled
+  } as const);
+}
+
+export const setAccountType = (accountType: string) => async (dispatch: React.Dispatch<any>) => {
+  await setAccountTypeData(accountType);
+  return ({
+    type: 'set-account-type',
+    accountType
+  } as const);
+}
 
 export type UserActions =
   | ActionType<typeof setLoading>
@@ -71,3 +82,4 @@ export type UserActions =
   | ActionType<typeof setHasSeenTutorial>
   | ActionType<typeof setDarkMode>
   | ActionType<typeof setMenuEnabled>
+  | ActionType<typeof setAccountType>

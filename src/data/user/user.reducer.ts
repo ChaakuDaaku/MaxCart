@@ -15,8 +15,9 @@ export function userReducer(state: UserState, action: UserActions): UserState {
       return { ...state, darkMode: action.darkMode };
     case 'set-is-loggedin':
       return { ...state, isLoggedIn: action.loggedIn };
-    case 'set-menu-enabled': {
-        return { ...state, menuEnabled: action.menuEnabled}
-    }
+    case 'set-menu-enabled':
+      return { ...state, menuEnabled: action.menuEnabled};
+    case 'set-account-type':
+      return { ...state, accountType: action.accountType};
   }
 }

@@ -1,15 +1,26 @@
 import React, { useEffect } from 'react';
 import { connect } from '../data/connect';
 import { Redirect } from 'react-router';
-import { loadItemData } from '../data/sessions/sessions.actions';
+import { loadCardData, loadItemData } from '../data/sessions/sessions.actions';
+import { loadUserData } from '../data/user/user.actions';
 
 interface StateProps {
   hasSeenTutorial: boolean;
   isLoggedIn: boolean;
 }
 
-const GoToTabs: React.FC<StateProps> = ({ }) => {
+interface DispatchProps {
+  loadCardData: typeof loadCardData;
+  loadUserData: typeof loadUserData;
+  loadItemData: typeof loadItemData;
+}
+
+interface GoToTabsProps extends StateProps, DispatchProps { }
+
+const GoToTabs: React.FC<GoToTabsProps> = ({ loadItemData, loadCardData, loadUserData}) => {
     useEffect(() => {
+      loadUserData();
+      loadCardData();
       loadItemData();
       // eslint-disable-next-line
   }, []);
@@ -17,6 +28,7 @@ const GoToTabs: React.FC<StateProps> = ({ }) => {
 }
 
 const GoToTabsConnected = connect<{}, StateProps,{}>({
+  mapDispatchToProps: {loadUserData, loadCardData, loadItemData},
   component: GoToTabs
 })
 

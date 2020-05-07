@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonInput, IonText } from '@ionic/react';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonInput, IonText, IonSelect, IonSelectOption } from '@ionic/react';
 import './Login.scss';
 import { setIsLoggedIn, setUsername } from '../data/user/user.actions';
 import { connect } from '../data/connect';
@@ -45,7 +45,7 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
     if(username && password && name && number) {
       await setIsLoggedIn(true);
       await setUsernameAction(username);
-      history.push('/home', {direction: 'none'});
+      history.push('/tabs', {direction: 'none'});
     }
   };
 
@@ -68,8 +68,8 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
         <form noValidate onSubmit={login}>
           <IonList>
             <IonItem>
-              <IonLabel position="stacked" color="primary">Username</IonLabel>
-              <IonInput name="username" type="text" value={username} spellCheck={false} autocapitalize="off" onIonChange={e => {
+              <IonLabel position="stacked" color="primary">Email</IonLabel>
+              <IonInput name="username" type="email" value={username} spellCheck={false} autocapitalize="off" onIonChange={e => {
                 setUsername(e.detail.value!);
                 setUsernameError(false);
               }}
@@ -140,6 +140,15 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
             </IonItem>
 
           </IonList>
+          
+          <IonItem>
+            <IonLabel position="stacked" color="primary">Select Account Type</IonLabel>
+            <IonSelect>
+              <IonSelectOption>Customer</IonSelectOption>
+              <IonSelectOption>Merchant</IonSelectOption>
+            </IonSelect>
+          </IonItem>
+
 
           <IonRow>
             <IonCol>

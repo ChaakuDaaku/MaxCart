@@ -1,0 +1,123 @@
+{
+    "cardsDataset": [{
+            "id": 1,
+            "card_id": "GSH-0475",
+            "business_name": "Parisian-Cummerata",
+            "card_description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
+        },
+        {
+            "id": 2,
+            "card_id": "VUG-9498",
+            "business_name": "Blanda, Bailey and Murphy",
+            "card_description": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam."
+        },
+        {
+            "id": 3,
+            "card_id": "RXN-1444",
+            "business_name": "Kemmer Inc",
+            "card_description": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis."
+        },
+        {
+            "id": 4,
+            "card_id": "PLL-0350",
+            "business_name": "Hessel-Heidenreich",
+            "card_description": "Nulla nisl. Nunc nisl."
+        },
+        {
+            "id": 5,
+            "card_id": "HJJ-5734",
+            "business_name": "Rath-Leffler",
+            "card_description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi."
+        },
+        {
+            "id": 6,
+            "card_id": "DHM-4817",
+            "business_name": "Shanahan Group",
+            "card_description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio."
+        },
+        {
+            "id": 7,
+            "card_id": "XWF-6318",
+            "business_name": "Dietrich, Wunsch and Hodkiewicz",
+            "card_description": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo."
+        },
+        {
+            "id": 8,
+            "card_id": "ACV-9318",
+            "business_name": "Jast, Kshlerin and Wolff",
+            "card_description": "In congue. Etiam justo."
+        },
+        {
+            "id": 9,
+            "card_id": "GHH-4431",
+            "business_name": "Satterfield LLC",
+            "card_description": "Pellentesque ultrices mattis odio. Donec vitae nisi."
+        },
+        {
+            "id": 10,
+            "card_id": "AFK-7494",
+            "business_name": "Torp-Lowe",
+            "card_description": "Curabitur convallis."
+        },
+        {
+            "id": 11,
+            "card_id": "DKJ-7105",
+            "business_name": "Dickinson-Grimes",
+            "card_description": "In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem."
+        },
+        {
+            "id": 12,
+            "card_id": "JAC-0892",
+            "business_name": "Hettinger, Stiedemann and Konopelski",
+            "card_description": "Praesent lectus. Vestibulum quam sapien, varius ut, blandit non, interdum in, ante."
+        },
+        {
+            "id": 13,
+            "card_id": "ZQN-4550",
+            "business_name": "Prohaska, Keeling and Ledner",
+            "card_description": "Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh."
+        },
+        {
+            "id": 14,
+            "card_id": "JYH-4572",
+            "business_name": "O'Conner, Raynor and Ondricka",
+            "card_description": "Sed accumsan felis."
+        },
+        {
+            "id": 15,
+            "card_id": "FDR-3411",
+            "business_name": "Parker-Effertz",
+            "card_description": "Ut at dolor quis odio consequat varius. Integer ac leo."
+        },
+        {
+            "id": 16,
+            "card_id": "RGO-0940",
+            "business_name": "Green-Kassulke",
+            "card_description": "Integer non velit."
+        },
+        {
+            "id": 17,
+            "card_id": "QQT-9774",
+            "business_name": "Ankunding, Stark and Dicki",
+            "card_description": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue."
+        },
+        {
+            "id": 18,
+            "card_id": "FDT-2802",
+            "business_name": "Skiles-Maggio",
+            "card_description": "Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis."
+        },
+        {
+            "id": 19,
+            "card_id": "BCK-5499",
+            "business_name": "Keebler-Towne",
+            "card_description": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla."
+        },
+        {
+            "id": 20,
+            "card_id": "NUS-7901",
+            "business_name": "Balistreri, Conroy and Kling",
+            "card_description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti."
+        }
+    ]
+}

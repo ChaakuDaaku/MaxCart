@@ -5,4 +5,5 @@ export interface UserState {
     hasSeenTutorial: boolean;
     loading: boolean;
     menuEnabled: boolean;
+    accountType?: string;
 }

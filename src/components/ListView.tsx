@@ -1,4 +1,4 @@
-import { IonItemGroup, IonList, IonAlert, AlertButton } from '@ionic/react';
+import { IonItemGroup, IonList, IonAlert, AlertButton, IonPage, IonContent } from '@ionic/react';
 import React, { useState, useCallback } from 'react';
 import {Items} from '../models/Items';
 import ListItem from './ListItem';
@@ -33,29 +33,30 @@ const ListView: React.FC<ListViewProps> = ({itemDataset, addToCart, removeFromCa
     }, []);
 
     return (
-        <>
-        <IonList>
-            {itemDataset.dataset.map((item, index: number) => (
-                <IonItemGroup>
-                    <ListItem
-                    item = {item}
-                    onShowAlert = {handleShowAlert}
-                    onAddToCart = {addToCart}
-                    onRemoveFromCart = {removeFromCart}
-                    isInCart = {cartIems.indexOf(item.id) > -1}
-                    />
-                </IonItemGroup>
-            ))}
-        </IonList>
-        <IonAlert
-            isOpen={showAlert}
-            header={alertHeader}
-            buttons={alertButtons}
-            onDidDismiss={() => setShowAlert(false)}
-        ></IonAlert>
-        </>
+        <IonPage>
+            <IonContent fullscreen={true}>
+                <IonList>
+                    {itemDataset.dataset.map((item, index: number) => (
+                        <IonItemGroup key={index}>
+                            <ListItem
+                            item = {item}
+                            onShowAlert = {handleShowAlert}
+                            onAddToCart = {addToCart}
+                            onRemoveFromCart = {removeFromCart}
+                            isInCart = {cartIems.indexOf(item.id) > -1}
+                            />
+                        </IonItemGroup>
+                    ))}
+                </IonList>
+                <IonAlert
+                    isOpen={showAlert}
+                    header={alertHeader}
+                    buttons={alertButtons}
+                    onDidDismiss={() => setShowAlert(false)}
+                ></IonAlert>
+            </IonContent>
+        </IonPage>
     )
-    
 }
 
 export default connect<OwnProps, StateProps, DispatchProps>({

@@ -25,7 +25,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import Tutorial from './pages/Tutorial';
 import { loadUserData, setIsLoggedIn, setUsername } from './data/user/user.actions';
-import { loadItemData } from './data/sessions/sessions.actions'
+import { loadCardData, loadItemData } from './data/sessions/sessions.actions'
 import { DispatchObject } from './utils/types';
 import { connect } from './data/connect';
 import { AppContextProvider } from './data/AppContext';
@@ -36,6 +36,7 @@ import MainTabs from './pages/MainTabs';
 import { Items } from './models/Items';
 import Support from './pages/Support';
 import Account from './pages/Account';
+import { Cards } from './models/Cards';
 
 const App: React.FC = () => {
   return (
@@ -48,21 +49,24 @@ const App: React.FC = () => {
 interface StateProps {
   darkMode: boolean;
   item_groups: Items;
+  card_groups: Cards
 }
 
 interface DispatchProps {
-  loadItemData: typeof loadItemData;
+  loadCardData: typeof loadCardData;
   loadUserData: typeof loadUserData;
   setIsLoggedIn: typeof setIsLoggedIn;
   setUsername: typeof setUsername;
+  loadItemData: typeof loadItemData;
 }
 
 interface IonicAppProps extends StateProps, DispatchObject { }
 
-const IonicApp: React.FC<IonicAppProps> = ({darkMode, setIsLoggedIn, setUsername, loadUserData, loadItemData}) => {
+const IonicApp: React.FC<IonicAppProps> = ({darkMode, setIsLoggedIn, setUsername, loadUserData, loadCardData, loadItemData}) => {
   
   useEffect(() => {
     loadUserData();
+    loadCardData();
     loadItemData();
     // eslint-disable-next-line
   }, []);
@@ -98,8 +102,9 @@ export default App;
 const IonicAppConnected = connect<{}, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
     darkMode: state.user.darkMode,
-    item_groups: state.data.dataset
+    item_groups: state.data.dataset,
+    card_groups: state.data.cardsDataset
   }),
-  mapDispatchToProps: {loadUserData, setIsLoggedIn, setUsername, loadItemData},
+  mapDispatchToProps: {loadUserData, setIsLoggedIn, setUsername, loadCardData, loadItemData},
   component: IonicApp
 });

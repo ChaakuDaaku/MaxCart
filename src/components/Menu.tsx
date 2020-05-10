@@ -11,7 +11,7 @@ import './Menu.css'
 
 const routes = {
     appPages: [
-        { title: 'Home', path: '/tabs/home/cards', icon: home},
+        { title: 'Home', path: '/tabs/home', icon: home},
         { title: 'Cart', path: '/tabs/cart', icon: cart},
 
     ],

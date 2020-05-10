@@ -13,24 +13,19 @@ import {
   IonSearchbar,
   IonButton,
   IonIcon,
-  IonToast,
-  IonRouterOutlet
+  IonToast
 } from '@ionic/react';
 import './Home.scss';
-import { Items } from '../models/Items';
 import { connect } from '../data/connect';
 import * as selectors from '../data/selectors';
-import ListView from '../components/ListView';
 import { setSearchText } from '../data/sessions/sessions.actions';
 import { search } from 'ionicons/icons';
 import CardView from '../components/CardView';
 import { Cards } from '../models/Cards';
-import { Redirect, Route } from 'react-router';
 
 interface OwnProps { }
 
 interface StateProps {
-  dataset: Items;
   cardDataset: Cards;
   mode: 'ios' | 'md'
 }
@@ -41,7 +36,7 @@ interface DispatchProps {
 
 type HomeProps = OwnProps & StateProps & DispatchProps;
 
-const Home: React.FC<HomeProps> = ( { dataset, mode, setSearchText , cardDataset}) => {
+const Home: React.FC<HomeProps> = ({ mode, setSearchText , cardDataset}) => {
   const [showSearchbar, setShowSearchbar] = useState<boolean>(false);
   const ionRefresherRef = useRef<HTMLIonRefresherElement>(null);
   const [showCompleteToast, setShowCompleteToast] = useState(false);
@@ -95,22 +90,19 @@ const Home: React.FC<HomeProps> = ( { dataset, mode, setSearchText , cardDataset
         }
       </IonHeader>
       
-      <IonContent fullscreen={false}>
+      <IonContent fullscreen={true}>
         <IonRefresher slot="fixed" ref={ionRefresherRef} onIonRefresh={doRefresh}>
           <IonRefresherContent />
         </IonRefresher>
         
-        <IonRouterOutlet>
-          <Redirect exact={true} path="/tabs/home" to="/tabs/home/cards" />
-          
-          <Route path="/tabs/home/cards" render={() => <CardView cardsDataset = {cardDataset} />} exact/>
-          <Route path="/tabs/home/cards/items" render={() => <ListView itemDataset = {dataset}/>}/>
-        </IonRouterOutlet>
-
+        <CardView
+          cardsDataset={cardDataset}
+        />
+        
         <IonToast
           isOpen={showCompleteToast}
           message="Refresh complete"
-          duration={2000}
+          duration={500}
           onDidDismiss={() => setShowCompleteToast(false)}
         />
       </IonContent>
@@ -120,9 +112,8 @@ const Home: React.FC<HomeProps> = ( { dataset, mode, setSearchText , cardDataset
 
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
-    dataset: selectors.getListItems(state),
-    mode: getConfig()!.get('mode'),
-    cardDataset: selectors.getCardItems(state)
+    cardDataset: selectors.getCardItems(state),
+    mode: getConfig()!.get('mode')
   }),
   mapDispatchToProps: {
     setSearchText

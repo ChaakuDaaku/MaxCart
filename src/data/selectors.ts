@@ -4,7 +4,6 @@ import { Items, Item } from '../models/Items';
 import { Card, Cards } from "../models/Cards";
 
 const getItems = (state: AppState) => {
-    console.log("Hiiii")
     return state.data.dataset
 }
 

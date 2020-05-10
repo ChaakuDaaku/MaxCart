@@ -85,8 +85,8 @@ const ListItem: React.FC<ListItemProps> = ({ item, onShowAlert, onAddToCart, onR
       
       <IonToast
         isOpen={showCompleteToast}
-        message="Refresh complete"
-        duration={1000}
+        message="Cart Modified"
+        duration={500}
         onDidDismiss={() => setShowCompleteToast(false)}
       />
     </>

@@ -19,11 +19,10 @@ const CardItem: React.FC<CardViewProps> = ({ card }) => {
 
                 <IonCardContent>
                     {card.card_description}
-
                     <IonLabel>
                         <p>Delivery Date: {card.delivery_date}</p>
                     </IonLabel>
-                    <IonButton color="tertiary" expand="block"  routerLink={"/tabs/home/cards/items"}>Open Card</IonButton>
+                    <IonButton color="medium" expand="block" routerLink={`/tabs/home/${card.id}`}>Open Card</IonButton>
                 </IonCardContent>
             </IonCard>
             <IonToast

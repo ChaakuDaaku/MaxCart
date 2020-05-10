@@ -1,16 +1,17 @@
-import { IonItemGroup, IonList, IonAlert, AlertButton, IonPage, IonContent, IonNote } from '@ionic/react';
+import { IonItemGroup, IonList, IonAlert, AlertButton, IonPage, IonContent, IonToolbar, IonButtons, IonBackButton } from '@ionic/react';
 import React, { useState, useCallback } from 'react';
 import {Items} from '../models/Items';
 import ListItem from './ListItem';
 import { connect } from '../data/connect';
 import { addToCart, removeFromCart } from '../data/sessions/sessions.actions';
+import * as selectors from '../data/selectors';
 
-interface OwnProps {
-    itemDataset: Items
-}
+interface OwnProps { }
 
 interface StateProps { 
-    cartIems: number[];
+    cartItems: number[];
+    itemDataset: Items;
+    cart: Items
 }
 
 interface DispatchProps {
@@ -18,9 +19,11 @@ interface DispatchProps {
     removeFromCart: typeof removeFromCart;
  }
 
-interface ListViewProps extends OwnProps, StateProps, DispatchProps { };
+interface ListViewProps extends OwnProps, StateProps, DispatchProps { 
+    data: Items
+ };
 
-const ListView: React.FC<ListViewProps> = ({itemDataset, addToCart, removeFromCart, cartIems}) => {
+const ListView: React.FC<ListViewProps> = ({itemDataset, addToCart, removeFromCart, cartItems, cart, data}) => {
 
     const [showAlert, setShowAlert] = useState(false);
     const [alertHeader, setAlertHeader] = useState('');
@@ -32,18 +35,35 @@ const ListView: React.FC<ListViewProps> = ({itemDataset, addToCart, removeFromCa
     setShowAlert(true);
     }, []);
 
+    const isCartPage = window.location.href.indexOf("/tabs/cart") > 0;
+
+    if (isCartPage) {
+        data = cart
+    } else {
+        data = itemDataset
+    }
+
     return (
+        <>
+        {!isCartPage &&
         <IonPage>
+            <IonToolbar>
+                <IonButtons slot="start">
+                    <IonBackButton defaultHref="/tabs/home"></IonBackButton>
+                </IonButtons>
+                <IonButtons slot="end"></IonButtons>
+            </IonToolbar>
+
             <IonContent fullscreen={true}>
                 <IonList>
-                    {itemDataset.dataset.map((item, index: number) => (
+                    {data.dataset.map((item, index: number) => (
                         <IonItemGroup key={index}>
                             <ListItem
                             item = {item}
                             onShowAlert = {handleShowAlert}
                             onAddToCart = {addToCart}
                             onRemoveFromCart = {removeFromCart}
-                            isInCart = {cartIems.indexOf(item.id) > -1}
+                            isInCart = {cartItems.indexOf(item.id) > -1}
                             />
                         </IonItemGroup>
                     ))}
@@ -56,12 +76,37 @@ const ListView: React.FC<ListViewProps> = ({itemDataset, addToCart, removeFromCa
                 ></IonAlert>
             </IonContent>
         </IonPage>
+        }
+        <IonContent fullscreen={true}>
+            <IonList>
+                {data.dataset.map((item, index: number) => (
+                    <IonItemGroup key={index}>
+                        <ListItem
+                        item = {item}
+                        onShowAlert = {handleShowAlert}
+                        onAddToCart = {addToCart}
+                        onRemoveFromCart = {removeFromCart}
+                        isInCart = {cartItems.indexOf(item.id) > -1}
+                        />
+                    </IonItemGroup>
+                ))}
+            </IonList>
+            <IonAlert
+                isOpen={showAlert}
+                header={alertHeader}
+                buttons={alertButtons}
+                onDidDismiss={() => setShowAlert(false)}
+            ></IonAlert>
+        </IonContent>
+        </>
     )
 }
 
 export default connect<OwnProps, StateProps, DispatchProps>({
     mapStateToProps: (state) =>({
-        cartIems: state.data.cart
+        cartItems: state.data.cart,
+        cart: selectors.getCartItems(state),
+        itemDataset: selectors.getListItems(state)
     }),
     mapDispatchToProps: ({
         addToCart,

@@ -16,17 +16,14 @@ import {
   IonToast
 } from '@ionic/react';
 import './Home.scss';
-import { Items } from '../models/Items';
 import { connect } from '../data/connect';
-import * as selectors from '../data/selectors';
 import ListView from '../components/ListView';
 import { setSearchText } from '../data/sessions/sessions.actions';
-import { options, search } from 'ionicons/icons';
+import { search } from 'ionicons/icons';
 
 interface OwnProps { }
 
 interface StateProps {
-  cartItems: Items;
   mode: 'ios' | 'md'
 }
 
@@ -36,9 +33,8 @@ interface DispatchProps {
 
 type HomeProps = OwnProps & StateProps & DispatchProps;
 
-const Cart: React.FC<HomeProps> = ({ cartItems, mode, setSearchText }) => {
+const Cart: React.FC<HomeProps> = ({ mode, setSearchText }) => {
   const [showSearchbar, setShowSearchbar] = useState<boolean>(false);
-  const [showFilterModal, setShowFilterModal] = useState(false);
   const ionRefresherRef = useRef<HTMLIonRefresherElement>(null);
   const [showCompleteToast, setShowCompleteToast] = useState(false);
 
@@ -75,11 +71,6 @@ const Cart: React.FC<HomeProps> = ({ cartItems, mode, setSearchText }) => {
                 <IonIcon slot="icon-only" icon={search}></IonIcon>
               </IonButton>
             }
-            {!showSearchbar &&
-              <IonButton onClick={() => setShowFilterModal(true)}>
-                {mode === 'ios' ? 'Filter' : <IonIcon icon={options} slot="icon-only" />}
-              </IonButton>
-            }
           </IonButtons>
         </IonToolbar>
       </IonHeader>
@@ -101,10 +92,10 @@ const Cart: React.FC<HomeProps> = ({ cartItems, mode, setSearchText }) => {
         <IonToast
           isOpen={showCompleteToast}
           message="Refresh complete"
-          duration={2000}
+          duration={500}
           onDidDismiss={() => setShowCompleteToast(false)}
         />
-        <ListView itemDataset = {cartItems}/>
+        <ListView />
       </IonContent>
     </IonPage>
   );
@@ -112,7 +103,6 @@ const Cart: React.FC<HomeProps> = ({ cartItems, mode, setSearchText }) => {
 
 export default connect<OwnProps, StateProps, DispatchProps>({
   mapStateToProps: (state) => ({
-    cartItems: selectors.getCartItems(state),
     mode: getConfig()!.get('mode')
   }),
   mapDispatchToProps: {

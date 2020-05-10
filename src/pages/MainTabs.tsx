@@ -6,6 +6,7 @@ import Home from './Home';
 
 import './MainTabs.scss';
 import Cart from './Cart';
+import ListView from '../components/ListView';
 
 interface MainTabsProps { }
 
@@ -21,6 +22,7 @@ const MainTabs: React.FC<MainTabsProps> = () => {
         */}
         <Route path="/tabs/home" render={() => <Home />} exact={true} />
         <Route path="/tabs/cart" render={() => <Cart />} exact={true} />
+        <Route path="/tabs/home/:id" component={ListView} exact={true} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
         <IonTabButton tab="home" href="/tabs/home">

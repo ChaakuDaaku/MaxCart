@@ -1,4 +1,4 @@
-import { IonItemGroup, IonList, IonAlert, AlertButton, IonPage, IonContent } from '@ionic/react';
+import { IonItemGroup, IonList, IonAlert, AlertButton, IonPage, IonContent, IonNote } from '@ionic/react';
 import React, { useState, useCallback } from 'react';
 import {Items} from '../models/Items';
 import ListItem from './ListItem';

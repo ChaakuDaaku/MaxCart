@@ -4,6 +4,7 @@ import { Items, Item } from '../models/Items';
 import { Card, Cards } from "../models/Cards";
 
 const getItems = (state: AppState) => {
+    console.log("Hiiii")
     return state.data.dataset
 }
 
@@ -66,7 +67,8 @@ export const getSearchedCards = createSelector(
                 id: card.id,
                 card_id: card.card_id,
                 business_name: card.business_name,
-                card_description: card.card_description
+                card_description: card.card_description,
+                delivery_date: card.delivery_date
             }
             card_group.push(groupToAdd)
         });

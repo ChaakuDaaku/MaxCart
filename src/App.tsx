@@ -25,7 +25,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import Tutorial from './pages/Tutorial';
 import { loadUserData, setIsLoggedIn, setUsername } from './data/user/user.actions';
-import { loadCardData, loadItemData } from './data/sessions/sessions.actions'
+import { loadConfData } from './data/sessions/sessions.actions'
 import { DispatchObject } from './utils/types';
 import { connect } from './data/connect';
 import { AppContextProvider } from './data/AppContext';
@@ -53,21 +53,19 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  loadCardData: typeof loadCardData;
+  loadConfData: typeof loadConfData;
   loadUserData: typeof loadUserData;
   setIsLoggedIn: typeof setIsLoggedIn;
   setUsername: typeof setUsername;
-  loadItemData: typeof loadItemData;
 }
 
 interface IonicAppProps extends StateProps, DispatchObject { }
 
-const IonicApp: React.FC<IonicAppProps> = ({darkMode, setIsLoggedIn, setUsername, loadUserData, loadCardData, loadItemData}) => {
+const IonicApp: React.FC<IonicAppProps> = ({darkMode, setIsLoggedIn, setUsername, loadUserData, loadConfData}) => {
   
   useEffect(() => {
     loadUserData();
-    loadCardData();
-    loadItemData();
+    loadConfData();
     // eslint-disable-next-line
   }, []);
   
@@ -105,6 +103,6 @@ const IonicAppConnected = connect<{}, StateProps, DispatchProps>({
     item_groups: state.data.dataset,
     card_groups: state.data.cardsDataset
   }),
-  mapDispatchToProps: {loadUserData, setIsLoggedIn, setUsername, loadCardData, loadItemData},
+  mapDispatchToProps: {loadUserData, setIsLoggedIn, setUsername, loadConfData},
   component: IonicApp
 });

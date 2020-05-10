@@ -7,4 +7,5 @@ export interface Card {
     card_id: string;
     business_name: string;
     card_description: string;
+    delivery_date: string;
 }

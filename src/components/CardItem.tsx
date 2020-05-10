@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonToast, IonButton} from '@ionic/react';
+import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonToast, IonButton, IonLabel} from '@ionic/react';
 import { Card } from '../models/Cards';
 
 interface CardViewProps { 
@@ -11,7 +11,7 @@ const CardItem: React.FC<CardViewProps> = ({ card }) => {
 
     return (
         <>
-            <IonCard button={true}>
+            <IonCard>
                 <IonCardHeader>
                     <IonCardSubtitle>{card.card_id}</IonCardSubtitle>
                     <IonCardTitle>{card.business_name}</IonCardTitle>
@@ -19,6 +19,10 @@ const CardItem: React.FC<CardViewProps> = ({ card }) => {
 
                 <IonCardContent>
                     {card.card_description}
+
+                    <IonLabel>
+                        <p>Delivery Date: {card.delivery_date}</p>
+                    </IonLabel>
                     <IonButton color="tertiary" expand="block"  routerLink={"/tabs/home/cards/items"}>Open Card</IonButton>
                 </IonCardContent>
             </IonCard>

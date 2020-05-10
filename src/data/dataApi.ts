@@ -15,32 +15,20 @@ const dataUrl = '/assets/data/items.json';
 
 const cardsDataUrl = '/assets/data/cards.json';
 
-export const getItemData = async () => {
+export const getConfData = async () => {
   const response = await Promise.all([
-    fetch(dataUrl)
+    fetch(dataUrl),
+    fetch(cardsDataUrl)
   ])
-  const responseData = await response[0].json();
-  const dataset = responseData as Items;
-  const data = {
-    dataset
-  }
-  return data;
-}
-
-export const getCardsData = async () => {
-  const response = await Promise.all([
-    fetch (cardsDataUrl)
-  ])
-  const responseData = await response[0].json();
-  const cardsDataset = responseData as Cards;
+  const dataset = await response[0].json() as Items;
+  const cardsDataset = await response[1].json() as Cards;
 
   const data = {
+    dataset,
     cardsDataset
   }
-  
   return data;
 }
-
 
 export const getUserData = async () => {
   const response = await Promise.all([

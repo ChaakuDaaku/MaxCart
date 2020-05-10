@@ -36,7 +36,7 @@ interface DispatchProps {
 
 type HomeProps = OwnProps & StateProps & DispatchProps;
 
-const Cart: React.FC<HomeProps> = ( { cartItems, mode, setSearchText }) => {
+const Cart: React.FC<HomeProps> = ({ cartItems, mode, setSearchText }) => {
   const [showSearchbar, setShowSearchbar] = useState<boolean>(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
   const ionRefresherRef = useRef<HTMLIonRefresherElement>(null);
@@ -63,7 +63,7 @@ const Cart: React.FC<HomeProps> = ( { cartItems, mode, setSearchText }) => {
             </IonButtons>
           }
           {!ios && !showSearchbar &&
-            <IonTitle>Items</IonTitle>
+            <IonTitle>Cart</IonTitle>
           }
           {showSearchbar &&
             <IonSearchbar showCancelButton="always" placeholder="Search" onIonChange={(e: CustomEvent) => setSearchText(e.detail.value)} onIonCancel={() => setShowSearchbar(false)}></IonSearchbar>
@@ -87,7 +87,7 @@ const Cart: React.FC<HomeProps> = ( { cartItems, mode, setSearchText }) => {
       <IonContent fullscreen={true}>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Items</IonTitle>
+            <IonTitle size="large">Cart</IonTitle>
           </IonToolbar>
           <IonToolbar>
             <IonSearchbar placeholder="Search" onIonChange={(e: CustomEvent) => setSearchText(e.detail.value)}></IonSearchbar>

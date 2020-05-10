@@ -35,6 +35,7 @@ const ListItem: React.FC<ListItemProps> = ({ item, onShowAlert, onAddToCart, onR
     } else {
       onAddToCart(item.id);
       setShowCompleteToast(true);
+      dismissAlert();
     }
   };
 
@@ -57,37 +58,37 @@ const ListItem: React.FC<ListItemProps> = ({ item, onShowAlert, onAddToCart, onR
 
   return (
     <>
-    <IonItemSliding ref={ionItemSlidingRef}>
-        <IonItem>
-          <IonLabel className="ion-text-wrap">
-            <h2>
-              {item.item_name}
-              <span className="date">
-              <IonNote>{item.item_price}
-              </IonNote>
-              </span>
-            </h2>
-            <h3>{item.item_weight}</h3>
-          </IonLabel>
-        </IonItem>
-        <IonItemOptions>
-          {isInCart ?
-            <IonItemOption color="danger" onClick={() => removeFromCart()}>
-              Remove
-            </IonItemOption>:
-            <IonItemOption color="favorite" onClick={addToCart}>
-              Add to Cart
-            </IonItemOption>
-          }
-        </IonItemOptions>
-    </IonItemSliding>
-    
-    <IonToast
-      isOpen={showCompleteToast}
-      message="Refresh complete"
-      duration={1000}
-      onDidDismiss={() => setShowCompleteToast(false)}
-    />
+      <IonItemSliding ref={ionItemSlidingRef}>
+          <IonItem>
+            <IonLabel className="ion-text-wrap">
+              <h2>
+                {item.item_name}
+                <span className="date">
+                <IonNote>{item.item_price}
+                </IonNote>
+                </span>
+              </h2>
+              <h3>{item.item_weight}</h3>
+            </IonLabel>
+          </IonItem>
+          <IonItemOptions>
+            {isInCart ?
+              <IonItemOption color="danger" onClick={() => removeFromCart()}>
+                Remove
+              </IonItemOption>:
+              <IonItemOption color="favorite" onClick={addToCart}>
+                Add to Cart
+              </IonItemOption>
+            }
+          </IonItemOptions>
+      </IonItemSliding>
+      
+      <IonToast
+        isOpen={showCompleteToast}
+        message="Refresh complete"
+        duration={1000}
+        onDidDismiss={() => setShowCompleteToast(false)}
+      />
     </>
   );
 };

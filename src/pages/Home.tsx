@@ -65,7 +65,7 @@ const Home: React.FC<HomeProps> = ( { dataset, mode, setSearchText , cardDataset
             <IonButtons slot="start">
               <IonMenuButton />
             </IonButtons>
-          }
+          } 
           {!ios && !showSearchbar &&
             <IonTitle>MaxCart</IonTitle>
           }
@@ -104,7 +104,7 @@ const Home: React.FC<HomeProps> = ( { dataset, mode, setSearchText , cardDataset
           <Redirect exact={true} path="/tabs/home" to="/tabs/home/cards" />
           
           <Route path="/tabs/home/cards" render={() => <CardView cardsDataset = {cardDataset} />} exact/>
-          <Route path="/tabs/home/cards/items" render={() => <ListView itemDataset = {dataset}/>} exact/>
+          <Route path="/tabs/home/cards/items" render={() => <ListView itemDataset = {dataset}/>}/>
         </IonRouterOutlet>
 
         <IonToast

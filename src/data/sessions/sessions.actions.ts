@@ -1,17 +1,10 @@
 import { ActionType } from "../../utils/types";
-import { getItemData, getCardsData } from "../dataApi";
+import { getConfData } from "../dataApi";
 import { ConfState } from "./conf.state";
 
-export const loadItemData = () => async (dispatch: React.Dispatch<any>) => {
+export const loadConfData = () => async (dispatch: React.Dispatch<any>) => {
   dispatch(setLoading(true));
-  const data = await getItemData();
-  dispatch(setData(data));
-  dispatch(setLoading(false));
-}
-
-export const loadCardData = () => async (dispatch: React.Dispatch<any>) => {
-  dispatch(setLoading(true));
-  const data = await getCardsData();
+  const data = await getConfData();
   dispatch(setData(data));
   dispatch(setLoading(false));
 }

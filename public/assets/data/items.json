@@ -3,350 +3,350 @@
             "id": 1,
             "item_name": "Lid Coffee Cup 8oz Blk",
             "item_weight": 2,
-            "item_price": "$85.99",
+            "item_price": "85.99",
             "item_type": "fruit"
         },
         {
             "id": 2,
             "item_name": "Liqueur - Melon",
             "item_weight": 2,
-            "item_price": "$42.12",
+            "item_price": "42.12",
             "item_type": "vegetable"
         },
         {
             "id": 3,
             "item_name": "Sugar - Fine",
             "item_weight": 1,
-            "item_price": "$81.97",
+            "item_price": "81.97",
             "item_type": "vegetable"
         },
         {
             "id": 4,
             "item_name": "Clam Nectar",
             "item_weight": 2,
-            "item_price": "$66.70",
+            "item_price": "66.70",
             "item_type": "vegetable"
         },
         {
             "id": 5,
             "item_name": "Pepper - Paprika, Hungarian",
             "item_weight": 2,
-            "item_price": "$42.35",
+            "item_price": "42.35",
             "item_type": "fruit"
         },
         {
             "id": 6,
             "item_name": "Puff Pastry - Sheets",
             "item_weight": 2,
-            "item_price": "$37.83",
+            "item_price": "37.83",
             "item_type": "vegetable"
         },
         {
             "id": 7,
             "item_name": "Sandwich Wrap",
             "item_weight": 1,
-            "item_price": "$72.01",
+            "item_price": "72.01",
             "item_type": "fruit"
         },
         {
             "id": 8,
             "item_name": "Ice Cream Bar - Rolo Cone",
             "item_weight": 1,
-            "item_price": "$87.53",
+            "item_price": "87.53",
             "item_type": "vegetable"
         },
         {
             "id": 9,
             "item_name": "Chip - Potato Dill Pickle",
             "item_weight": 2,
-            "item_price": "$56.71",
+            "item_price": "56.71",
             "item_type": "fruit"
         },
         {
             "id": 10,
             "item_name": "Bread - Focaccia Quarter",
             "item_weight": 2,
-            "item_price": "$39.77",
+            "item_price": "39.77",
             "item_type": "vegetable"
         },
         {
             "id": 11,
             "item_name": "Meldea Green Tea Liquor",
             "item_weight": 2,
-            "item_price": "$99.73",
+            "item_price": "99.73",
             "item_type": "vegetable"
         },
         {
             "id": 12,
             "item_name": "Wine - Pinot Noir Pond Haddock",
             "item_weight": 1,
-            "item_price": "$86.16",
+            "item_price": "86.16",
             "item_type": "vegetable"
         },
         {
             "id": 13,
             "item_name": "Wine - Cotes Du Rhone",
             "item_weight": 1,
-            "item_price": "$95.53",
+            "item_price": "95.53",
             "item_type": "vegetable"
         },
         {
             "id": 14,
             "item_name": "Veal - Ground",
             "item_weight": 2,
-            "item_price": "$92.93",
+            "item_price": "92.93",
             "item_type": "vegetable"
         },
         {
             "id": 15,
             "item_name": "Wine - Pinot Grigio Collavini",
             "item_weight": 1,
-            "item_price": "$89.35",
+            "item_price": "89.35",
             "item_type": "fruit"
         },
         {
             "id": 16,
             "item_name": "Flour Pastry Super Fine",
             "item_weight": 1,
-            "item_price": "$97.97",
+            "item_price": "97.97",
             "item_type": "vegetable"
         },
         {
             "id": 17,
             "item_name": "Squid - Tubes / Tenticles 10/20",
             "item_weight": 1,
-            "item_price": "$24.97",
+            "item_price": "24.97",
             "item_type": "fruit"
         },
         {
             "id": 18,
             "item_name": "Mushroom - Porcini Frozen",
             "item_weight": 2,
-            "item_price": "$21.95",
+            "item_price": "21.95",
             "item_type": "fruit"
         },
         {
             "id": 19,
             "item_name": "Ice Cream - Fudge Bars",
             "item_weight": 1,
-            "item_price": "$42.65",
+            "item_price": "42.65",
             "item_type": "fruit"
         },
         {
             "id": 20,
             "item_name": "Plastic Wrap",
             "item_weight": 1,
-            "item_price": "$40.67",
+            "item_price": "40.67",
             "item_type": "fruit"
         },
         {
             "id": 21,
             "item_name": "Longos - Chicken Cordon Bleu",
             "item_weight": 2,
-            "item_price": "$26.50",
+            "item_price": "26.50",
             "item_type": "fruit"
         },
         {
             "id": 22,
             "item_name": "The Pop Shoppe - Grape",
             "item_weight": 1,
-            "item_price": "$18.33",
+            "item_price": "18.33",
             "item_type": "fruit"
         },
         {
             "id": 23,
             "item_name": "Pork - Belly Fresh",
             "item_weight": 2,
-            "item_price": "$31.26",
+            "item_price": "31.26",
             "item_type": "vegetable"
         },
         {
             "id": 24,
             "item_name": "Veal - Insides Provini",
             "item_weight": 2,
-            "item_price": "$99.96",
+            "item_price": "99.96",
             "item_type": "fruit"
         },
         {
             "id": 25,
             "item_name": "Shrimp - 100 / 200 Cold Water",
             "item_weight": 1,
-            "item_price": "$85.78",
+            "item_price": "85.78",
             "item_type": "fruit"
         },
         {
             "id": 26,
             "item_name": "Raisin - Dark",
             "item_weight": 1,
-            "item_price": "$40.73",
+            "item_price": "40.73",
             "item_type": "vegetable"
         },
         {
             "id": 27,
             "item_name": "Transfer Sheets",
             "item_weight": 2,
-            "item_price": "$88.17",
+            "item_price": "88.17",
             "item_type": "fruit"
         },
         {
             "id": 28,
             "item_name": "Tea - Green",
             "item_weight": 1,
-            "item_price": "$17.93",
+            "item_price": "17.93",
             "item_type": "fruit"
         },
         {
             "id": 29,
             "item_name": "Sauce - Black Current, Dry Mix",
             "item_weight": 1,
-            "item_price": "$85.21",
+            "item_price": "85.21",
             "item_type": "fruit"
         },
         {
             "id": 30,
             "item_name": "Chicken Giblets",
             "item_weight": 1,
-            "item_price": "$55.08",
+            "item_price": "55.08",
             "item_type": "fruit"
         },
         {
             "id": 31,
             "item_name": "Wine - Redchard Merritt",
             "item_weight": 2,
-            "item_price": "$55.79",
+            "item_price": "55.79",
             "item_type": "vegetable"
         },
         {
             "id": 32,
             "item_name": "Potatoes - Peeled",
             "item_weight": 1,
-            "item_price": "$65.62",
+            "item_price": "65.62",
             "item_type": "fruit"
         },
         {
             "id": 33,
             "item_name": "Chicken - Base, Ultimate",
             "item_weight": 2,
-            "item_price": "$26.13",
+            "item_price": "26.13",
             "item_type": "fruit"
         },
         {
             "id": 34,
             "item_name": "Wine - Placido Pinot Grigo",
             "item_weight": 1,
-            "item_price": "$75.36",
+            "item_price": "75.36",
             "item_type": "fruit"
         },
         {
             "id": 35,
             "item_name": "Butter Balls Salted",
             "item_weight": 1,
-            "item_price": "$87.04",
+            "item_price": "87.04",
             "item_type": "fruit"
         },
         {
             "id": 36,
             "item_name": "Soup Campbells Turkey Veg.",
             "item_weight": 2,
-            "item_price": "$30.52",
+            "item_price": "30.52",
             "item_type": "fruit"
         },
         {
             "id": 37,
             "item_name": "Capon - Breast, Wing On",
             "item_weight": 2,
-            "item_price": "$34.76",
+            "item_price": "34.76",
             "item_type": "fruit"
         },
         {
             "id": 38,
             "item_name": "Vaccum Bag 10x13",
             "item_weight": 2,
-            "item_price": "$30.38",
+            "item_price": "30.38",
             "item_type": "fruit"
         },
         {
             "id": 39,
             "item_name": "Juice - Happy Planet",
             "item_weight": 2,
-            "item_price": "$38.79",
+            "item_price": "38.79",
             "item_type": "vegetable"
         },
         {
             "id": 40,
             "item_name": "Beer - Sleemans Cream Ale",
             "item_weight": 2,
-            "item_price": "$93.45",
+            "item_price": "93.45",
             "item_type": "fruit"
         },
         {
             "id": 41,
             "item_name": "Chinese Foods - Chicken Wing",
             "item_weight": 2,
-            "item_price": "$97.42",
+            "item_price": "97.42",
             "item_type": "vegetable"
         },
         {
             "id": 42,
             "item_name": "Pumpkin",
             "item_weight": 1,
-            "item_price": "$80.91",
+            "item_price": "80.91",
             "item_type": "vegetable"
         },
         {
             "id": 43,
             "item_name": "Waffle Stix",
             "item_weight": 2,
-            "item_price": "$85.30",
+            "item_price": "85.30",
             "item_type": "vegetable"
         },
         {
             "id": 44,
             "item_name": "Sprouts - Brussel",
             "item_weight": 1,
-            "item_price": "$59.37",
+            "item_price": "59.37",
             "item_type": "fruit"
         },
         {
             "id": 45,
             "item_name": "Chevril",
             "item_weight": 2,
-            "item_price": "$85.25",
+            "item_price": "85.25",
             "item_type": "vegetable"
         },
         {
             "id": 46,
             "item_name": "Flour - Masa De Harina Mexican",
             "item_weight": 2,
-            "item_price": "$23.65",
+            "item_price": "23.65",
             "item_type": "fruit"
         },
         {
             "id": 47,
             "item_name": "Spaghetti Squash",
             "item_weight": 1,
-            "item_price": "$35.49",
+            "item_price": "35.49",
             "item_type": "fruit"
         },
         {
             "id": 48,
             "item_name": "Schnappes - Peach, Walkers",
             "item_weight": 2,
-            "item_price": "$69.60",
+            "item_price": "69.60",
             "item_type": "vegetable"
         },
         {
             "id": 49,
             "item_name": "Apple - Fuji",
             "item_weight": 2,
-            "item_price": "$78.09",
+            "item_price": "78.09",
             "item_type": "fruit"
         },
         {
             "id": 50,
             "item_name": "Eel - Smoked",
             "item_weight": 2,
-            "item_price": "$44.89",
+            "item_price": "44.89",
             "item_type": "vegetable"
         }
     ]

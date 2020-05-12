@@ -64,7 +64,7 @@ const ListItem: React.FC<ListItemProps> = ({ item, onShowAlert, onAddToCart, onR
               <h2>
                 {item.item_name}
                 <span className="date">
-                <IonNote>{item.item_price}
+                <IonNote>Rs {item.item_price}
                 </IonNote>
                 </span>
               </h2>

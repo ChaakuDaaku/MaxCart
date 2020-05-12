@@ -1,4 +1,4 @@
-import { IonItemGroup, IonList, IonAlert, AlertButton, IonPage, IonContent, IonToolbar, IonButtons, IonBackButton } from '@ionic/react';
+import { IonItemGroup, IonList, IonAlert, AlertButton, IonPage, IonContent, IonToolbar, IonButtons, IonBackButton, IonFooter } from '@ionic/react';
 import React, { useState, useCallback } from 'react';
 import {Items} from '../models/Items';
 import ListItem from './ListItem';
@@ -98,6 +98,13 @@ const ListView: React.FC<ListViewProps> = ({itemDataset, addToCart, removeFromCa
                 onDidDismiss={() => setShowAlert(false)}
             ></IonAlert>
         </IonContent>
+        <IonFooter translucent={true}>
+            <IonToolbar color="success">
+                Total: {data.dataset.flatMap( (item) => {
+                    return item.item_price
+                }).reduce( (a,b) => a+b)}
+            </IonToolbar>
+        </IonFooter>
         </>
     )
 }

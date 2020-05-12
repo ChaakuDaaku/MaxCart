@@ -13,7 +13,8 @@ import {
   IonSearchbar,
   IonButton,
   IonIcon,
-  IonToast
+  IonToast,
+  useIonViewDidEnter
 } from '@ionic/react';
 import './Home.scss';
 import { connect } from '../data/connect';
@@ -40,6 +41,8 @@ const Home: React.FC<HomeProps> = ({ mode, setSearchText , cardDataset}) => {
   const [showSearchbar, setShowSearchbar] = useState<boolean>(false);
   const ionRefresherRef = useRef<HTMLIonRefresherElement>(null);
   const [showCompleteToast, setShowCompleteToast] = useState(false);
+  const [showLandingToast, setShowLandingToast] = useState(false);
+
 
   const pageRef = useRef<HTMLElement>(null);
 
@@ -51,6 +54,12 @@ const Home: React.FC<HomeProps> = ({ mode, setSearchText , cardDataset}) => {
       setShowCompleteToast(true);
     }, 2500);
   };
+
+  useIonViewDidEnter(() => {
+    setTimeout(() => {
+      setShowLandingToast(true);
+    }, 1000)
+  })
 
   return (
     <IonPage ref={pageRef} id="home-page">
@@ -105,6 +114,14 @@ const Home: React.FC<HomeProps> = ({ mode, setSearchText , cardDataset}) => {
           duration={500}
           onDidDismiss={() => setShowCompleteToast(false)}
         />
+
+        <IonToast
+          isOpen={showLandingToast}
+          message="Showing Merchant cards in your pincode"
+          duration={2000}
+          onDidDismiss={() => setShowLandingToast(false)}
+        />
+
       </IonContent>
     </IonPage>
   );

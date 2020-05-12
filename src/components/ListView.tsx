@@ -97,6 +97,12 @@ const ListView: React.FC<ListViewProps> = ({itemDataset, addToCart, removeFromCa
       </IonContent>
     </IonPage>
     }
+    <IonToolbar>
+        <IonButtons slot="start">
+          <IonBackButton defaultHref="/tabs/home"></IonBackButton>
+        </IonButtons>
+        <IonButtons slot="end"></IonButtons>
+      </IonToolbar>
     <IonContent fullscreen={true}>
       <IonList>
         {data.dataset.map((item, index: number) => (
@@ -117,12 +123,13 @@ const ListView: React.FC<ListViewProps> = ({itemDataset, addToCart, removeFromCa
         buttons={alertButtons}
         onDidDismiss={() => setShowAlert(false)}
       ></IonAlert>
+        <IonFooter translucent={true} className="ion-padding-bottom ion-margin-bottom">
+            <IonToolbar color="success">
+                <h3 className="ion-float-right ion-padding-end ion-justify-content-end"> Total: ₹ {calcTotal(data.dataset)} </h3>
+            </IonToolbar>
+            </IonFooter>
     </IonContent>
-    <IonFooter translucent={true}>
-      <IonToolbar color="success">
-        Total: ₹ {calcTotal(data.dataset)}
-      </IonToolbar>
-    </IonFooter>
+
     </>
   )
 }

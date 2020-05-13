@@ -61,31 +61,31 @@ interface DispatchProps {
 
 interface IonicAppProps extends StateProps, DispatchObject { }
 
-const IonicApp: React.FC<IonicAppProps> = ({darkMode, setIsLoggedIn, setUsername, loadUserData, loadConfData}) => {
-  
+const IonicApp: React.FC<IonicAppProps> = ({ darkMode, setIsLoggedIn, setUsername, loadUserData, loadConfData }) => {
+
   useEffect(() => {
     loadUserData();
     loadConfData();
     // eslint-disable-next-line
   }, []);
-  
+
   return (
     <IonApp className={`${darkMode ? 'dark-theme' : ''}`}>
       <IonReactRouter>
         <IonSplitPane contentId="main">
           <Menu />
           <IonRouterOutlet id="main">
-            <Route path='/tabs' component={MainTabs}/>
+            <Route path='/tabs' component={MainTabs} />
             <Route path="/tutorial" component={Tutorial} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/account" component={Account} />
             <Route path="/support" component={Support} />
             <Route path="/logout" render={() => {
-                  setIsLoggedIn(false);
-                  setUsername(undefined);
-                  return <Redirect to="/tabs" />
-                }} />
+              setIsLoggedIn(false);
+              setUsername(undefined);
+              return <Redirect to="/tabs" />
+            }} />
             <Route path="/" component={HomeOrTutorial} exact />
           </IonRouterOutlet>
         </IonSplitPane>
@@ -102,6 +102,6 @@ const IonicAppConnected = connect<{}, StateProps, DispatchProps>({
     item_groups: state.data.dataset,
     card_groups: state.data.cardsDataset
   }),
-  mapDispatchToProps: {loadUserData, setIsLoggedIn, setUsername, loadConfData},
+  mapDispatchToProps: { loadUserData, setIsLoggedIn, setUsername, loadConfData },
   component: IonicApp
 });

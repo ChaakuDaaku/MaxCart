@@ -19,9 +19,9 @@ export const setData = (data: Partial<ConfState>) => ({
   data
 } as const);
 
-export const setSearchText = (searchText?: string) => ({ 
-  type: 'set-search-text', 
-  searchText 
+export const setSearchText = (searchText?: string) => ({
+  type: 'set-search-text',
+  searchText
 } as const);
 
 export const addToCart = (itemId: number) => ({
@@ -34,9 +34,9 @@ export const removeFromCart = (itemId: number) => ({
   itemId
 } as const);
 
-export type SessionsActions = 
-    | ActionType<typeof setLoading>
-    | ActionType<typeof setData>
-    | ActionType<typeof setSearchText>
-    | ActionType<typeof addToCart>
-    | ActionType<typeof removeFromCart>
+export type SessionsActions =
+  | ActionType<typeof setLoading>
+  | ActionType<typeof setData>
+  | ActionType<typeof setSearchText>
+  | ActionType<typeof addToCart>
+  | ActionType<typeof removeFromCart>

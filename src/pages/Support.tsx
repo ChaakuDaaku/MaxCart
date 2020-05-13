@@ -1,5 +1,22 @@
 import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonText, IonTextarea, IonToast } from '@ionic/react';
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonPage,
+  IonButtons,
+  IonMenuButton,
+  IonRow,
+  IonCol,
+  IonButton,
+  IonList,
+  IonItem,
+  IonLabel,
+  IonText,
+  IonTextarea,
+  IonToast
+} from '@ionic/react';
 import './Login.scss';
 import { connect } from '../data/connect';
 
@@ -66,9 +83,9 @@ const Support: React.FC<SupportProps> = () => {
             </IonCol>
           </IonRow>
         </form>
-       
+
       </IonContent>
-     
+
       <IonToast
         isOpen={showToast}
         duration={3000}

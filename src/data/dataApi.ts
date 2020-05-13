@@ -36,8 +36,8 @@ export const getUserData = async () => {
     Storage.get({ key: HAS_SEEN_TUTORIAL }),
     Storage.get({ key: USERNAME }),
     Storage.get({ key: MENU_ENABLED }),
-    Storage.get({ key: DARK_MODE}),
-    Storage.get({ key: ACCOUNT_TYPE }) ]);
+    Storage.get({ key: DARK_MODE }),
+    Storage.get({ key: ACCOUNT_TYPE })]);
   const isLoggedIn = await response[0].value === 'true';
   const hasSeenTutorial = await response[1].value === 'true';
   const username = await response[2].value || undefined;
@@ -68,7 +68,7 @@ export const setHasSeenTutorialData = async (hasSeenTutorial: boolean) => {
 }
 
 export const setDarkModeData = async (darkMode: boolean) => {
-  await Storage.set({ key: DARK_MODE, value: JSON.stringify(darkMode)})
+  await Storage.set({ key: DARK_MODE, value: JSON.stringify(darkMode) })
 }
 
 export const setUsernameData = async (username?: string) => {
@@ -83,6 +83,6 @@ export const setAccountTypeData = async (accountType?: string) => {
   if (!accountType) {
     await Storage.remove({ key: ACCOUNT_TYPE });
   } else {
-    await Storage.set({ key: ACCOUNT_TYPE, value: accountType})
+    await Storage.set({ key: ACCOUNT_TYPE, value: accountType })
   }
 }

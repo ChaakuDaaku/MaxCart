@@ -1,11 +1,11 @@
 export interface Cards {
-    cardsDataset : Card[]
+  cardsDataset: Card[]
 }
 
 export interface Card {
-    id: number;
-    card_id: string;
-    business_name: string;
-    card_description: string;
-    delivery_date: string;
+  id: number;
+  card_id: string;
+  business_name: string;
+  card_description: string;
+  delivery_date: string;
 }

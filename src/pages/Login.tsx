@@ -1,20 +1,36 @@
 import React, { useState } from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonMenuButton, IonRow, IonCol, IonButton, IonList, IonItem, IonLabel, IonInput, IonText } from '@ionic/react';
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonPage,
+  IonButtons,
+  IonMenuButton,
+  IonRow,
+  IonCol,
+  IonButton,
+  IonList,
+  IonItem,
+  IonLabel,
+  IonInput,
+  IonText
+} from '@ionic/react';
 import './Login.scss';
 import { setIsLoggedIn, setUsername } from '../data/user/user.actions';
 import { connect } from '../data/connect';
 import { RouteComponentProps } from 'react-router';
 
-interface OwnProps extends RouteComponentProps {}
+interface OwnProps extends RouteComponentProps { }
 
 interface DispatchProps {
   setIsLoggedIn: typeof setIsLoggedIn;
   setUsername: typeof setUsername;
 }
 
-interface LoginProps extends OwnProps,  DispatchProps { }
+interface LoginProps extends OwnProps, DispatchProps { }
 
-const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUsernameAction}) => {
+const Login: React.FC<LoginProps> = ({ setIsLoggedIn, history, setUsername: setUsernameAction }) => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -25,17 +41,17 @@ const Login: React.FC<LoginProps> = ({setIsLoggedIn, history, setUsername: setUs
   const login = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormSubmitted(true);
-    if(!username) {
+    if (!username) {
       setUsernameError(true);
     }
-    if(!password) {
+    if (!password) {
       setPasswordError(true);
     }
 
-    if(username && password) {
+    if (username && password) {
       await setIsLoggedIn(true);
       await setUsernameAction(username);
-      history.push('/tabs', {direction: 'none'});
+      history.push('/tabs', { direction: 'none' });
     }
   };
 

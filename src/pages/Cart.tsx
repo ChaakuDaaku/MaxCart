@@ -27,7 +27,7 @@ interface StateProps {
   mode: 'ios' | 'md'
 }
 
-interface DispatchProps { 
+interface DispatchProps {
   setSearchText: typeof setSearchText;
 }
 
@@ -64,7 +64,7 @@ const Cart: React.FC<HomeProps> = ({ mode, setSearchText }) => {
           {showSearchbar &&
             <IonSearchbar showCancelButton="always" placeholder="Search" onIonChange={(e: CustomEvent) => setSearchText(e.detail.value)} onIonCancel={() => setShowSearchbar(false)}></IonSearchbar>
           }
-          
+
           <IonButtons slot="end">
             {!ios && !showSearchbar &&
               <IonButton onClick={() => setShowSearchbar(true)}>
@@ -74,7 +74,7 @@ const Cart: React.FC<HomeProps> = ({ mode, setSearchText }) => {
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      
+
       <IonContent fullscreen={true}>
         <IonHeader collapse="condense">
           <IonToolbar>

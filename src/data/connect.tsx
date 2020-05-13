@@ -4,9 +4,9 @@ import { DispatchObject } from '../utils/types';
 import { AppContext } from './AppContext';
 
 interface ConnectParams<TOwnProps, TStateProps, TDispatchProps> {
-    mapStateToProps?: (state: AppState, props: TOwnProps) => TStateProps,
-    mapDispatchToProps?: TDispatchProps,
-    component: React.ComponentType<any>
+  mapStateToProps?: (state: AppState, props: TOwnProps) => TStateProps,
+  mapDispatchToProps?: TDispatchProps,
+  component: React.ComponentType<any>
 };
 
 export function connect<TOwnProps = any, TStateProps = any, TDispatchProps = any>({ mapStateToProps = () => ({} as TStateProps), mapDispatchToProps = {} as TDispatchProps, component }: ConnectParams<TOwnProps, TStateProps, TDispatchProps>): React.FunctionComponent<TOwnProps> {

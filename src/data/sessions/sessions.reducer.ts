@@ -15,9 +15,13 @@ export const sessionReducer = (state: ConfState, action: SessionsActions): ConfS
     }
     case 'add-to-cart': {
       if (state.cart.findIndex(item => item.itemId === action.item.itemId) !== -1) {
-        state.cart.forEach(item => {if(item.itemId === action.item.itemId) {item.itemQty++}} )
+        state.cart.forEach(item => { if (item.itemId === action.item.itemId) { item.itemQty++ } });
+        console.log([...(state.cart)])
+        return { ...state, cart: [...(state.cart)] };
+      } else {
+        console.log([...(state.cart), action.item]);
+        return { ...state, cart: [...(state.cart), action.item] };
       }
-      return { ...state, cart: [ ...(state.cart), action.item]};
     }
     case 'remove-from-cart': {
       index = state.cart.findIndex(item => item.itemId === action.itemId);

@@ -16,11 +16,12 @@ import ListItem from './ListItem';
 import { connect } from '../data/connect';
 import { addToCart, removeFromCart } from '../data/sessions/sessions.actions';
 import * as selectors from '../data/selectors';
+import { CartItem } from '../models/CartItems';
 
 interface OwnProps { }
 
 interface StateProps {
-  cartItems: number[];
+  cartItems: CartItem[];
   itemDataset: Items;
   cart: Items
 }
@@ -54,19 +55,35 @@ const ListView: React.FC<ListViewProps> = ({ itemDataset, addToCart, removeFromC
     data = itemDataset
   }
 
-  function calcTotal(dataset: Array<Item>): number {
+  const calcTotal = (dataset: Array<Item>): number => {
     if (dataset === undefined || dataset.length === 0) {
-      return 0
+      return 0;
     }
     else {
-      var total: number = dataset.map(item => Number(item.item_price)).reduce((a, b) => a + b)
-      return Number(total.toFixed(2))
+      var total: number = 0;
+      for (const item of dataset) {
+        var price = Number(item.item_price);
+        var qty = cartItems.find(cI => cI.itemId === item.id)?.itemQty;
+        if (qty === undefined) qty = 0;
+        total += price * qty;
+      }
+      return Number(total.toFixed(2));
+    }
+  }
+
+  const findQty = (item: Item): number => {
+    var index: number = cartItems.findIndex(cartItem => cartItem.itemId === item.id)
+    if (index === -1) {
+      return 0;
+    }
+    else {
+      return cartItems[index].itemQty
     }
   }
 
   return (
     <>
-      {!isCartPage &&
+      {!isCartPage ?
         <IonPage>
           <IonToolbar>
             <IonButtons slot="start">
@@ -84,7 +101,8 @@ const ListView: React.FC<ListViewProps> = ({ itemDataset, addToCart, removeFromC
                     onShowAlert={handleShowAlert}
                     onAddToCart={addToCart}
                     onRemoveFromCart={removeFromCart}
-                    isInCart={cartItems.indexOf(item.id) > -1}
+                    isInCart={cartItems.findIndex(cartItem => cartItem.itemId === item.id) > -1}
+                    qty={findQty(item)}
                   />
                 </IonItemGroup>
               ))}
@@ -97,40 +115,43 @@ const ListView: React.FC<ListViewProps> = ({ itemDataset, addToCart, removeFromC
             ></IonAlert>
           </IonContent>
         </IonPage>
-      }
-      <IonToolbar>
-        <IonButtons slot="start">
-          <IonBackButton defaultHref="/tabs/home"></IonBackButton>
-        </IonButtons>
-        <IonButtons slot="end"></IonButtons>
-      </IonToolbar>
-      <IonContent fullscreen={true}>
-        <IonList>
-          {data.dataset.map((item, index: number) => (
-            <IonItemGroup key={index}>
-              <ListItem
-                item={item}
-                onShowAlert={handleShowAlert}
-                onAddToCart={addToCart}
-                onRemoveFromCart={removeFromCart}
-                isInCart={cartItems.indexOf(item.id) > -1}
-              />
-            </IonItemGroup>
-          ))}
-        </IonList>
-        <IonAlert
-          isOpen={showAlert}
-          header={alertHeader}
-          buttons={alertButtons}
-          onDidDismiss={() => setShowAlert(false)}
-        ></IonAlert>
-        <IonFooter translucent={true} className="ion-padding-bottom ion-margin-bottom">
-          <IonToolbar color="success">
-            <h3 className="ion-float-right ion-padding-end ion-justify-content-end"> Total: ₹ {calcTotal(data.dataset)} </h3>
+        :
+        <>
+          <IonToolbar>
+            <IonButtons slot="start">
+              <IonBackButton defaultHref="/tabs/home"></IonBackButton>
+            </IonButtons>
+            <IonButtons slot="end"></IonButtons>
           </IonToolbar>
-        </IonFooter>
-      </IonContent>
-
+          <IonContent fullscreen={true}>
+            <IonList>
+              {data.dataset.map((item, index: number) => (
+                <IonItemGroup key={index}>
+                  <ListItem
+                    item={item}
+                    onShowAlert={handleShowAlert}
+                    onAddToCart={addToCart}
+                    onRemoveFromCart={removeFromCart}
+                    isInCart={cartItems.findIndex(cartItem => cartItem.itemId === item.id) > -1}
+                    qty={findQty(item)}
+                  />
+                </IonItemGroup>
+              ))}
+            </IonList>
+            <IonAlert
+              isOpen={showAlert}
+              header={alertHeader}
+              buttons={alertButtons}
+              onDidDismiss={() => setShowAlert(false)}
+            ></IonAlert>
+            <IonFooter translucent={true} className="ion-padding-bottom ion-margin-bottom">
+              <IonToolbar color="success">
+                <h3 className="ion-float-right ion-padding-end ion-justify-content-end"> Total: ₹ {calcTotal(data.dataset)} </h3>
+              </IonToolbar>
+            </IonFooter>
+          </IonContent>
+        </>
+      }
     </>
   )
 }

@@ -13,10 +13,22 @@ export const sessionReducer = (state: ConfState, action: SessionsActions): ConfS
       return { ...state, searchText: action.searchText };
     }
     case 'add-to-cart': {
-      return { ...state, cart: [...(state.cart), action.itemId] };
+      if (state.cart.findIndex(item => item.itemId === action.item.itemId) !== -1) {
+        state.cart.forEach(item => { if (item.itemId === action.item.itemId) { item.itemQty++ } });
+        return { ...state, cart: [...(state.cart)] };
+      } else {
+        return { ...state, cart: [...(state.cart), action.item] };
+      }
     }
     case 'remove-from-cart': {
-      return { ...state, cart: [...(state.cart).filter(x => x !== action.itemId)] };
+      var qty: number = state.cart[state.cart.findIndex(item => item.itemId === action.itemId)].itemQty;
+      if (qty === 1) {
+        return { ...state, cart: state.cart.filter(x => x.itemId !== action.itemId) };
+      }
+      else {
+        state.cart[state.cart.findIndex(item => item.itemId === action.itemId)].itemQty -= 1;
+      }
+      return {...state, cart: [...(state.cart)]};
     }
   }
 }

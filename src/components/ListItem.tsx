@@ -1,88 +1,122 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import {
-  IonItem,
-  IonLabel,
-  IonNote,
-  IonItemOptions,
-  IonItemSliding,
-  IonItemOption,
   AlertButton,
-  IonToast
+  IonToast,
+  IonIcon,
+  IonInput,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
+  IonCardSubtitle,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonButton,
 } from '@ionic/react';
 import './ListItem.css';
 import { Item } from '../models/Items';
+import { removeCircleOutline, addCircleOutline } from 'ionicons/icons';
+import { CartItem } from '../models/CartItems';
 
 interface ListItemProps {
   item: Item;
   onShowAlert: (header: string, buttons: AlertButton[]) => void;
-  onAddToCart: (id: number) => void;
+  onAddToCart: (item: CartItem) => void;
   onRemoveFromCart: (id: number) => void;
   isInCart: boolean;
+  qty: number;
 }
 
-const ListItem: React.FC<ListItemProps> = ({ item, onShowAlert, onAddToCart, onRemoveFromCart, isInCart }) => {
-
-  const ionItemSlidingRef = useRef<HTMLIonItemSlidingElement>(null)
+const ListItem: React.FC<ListItemProps> = ({ item, onShowAlert, onAddToCart, onRemoveFromCart, isInCart, qty }) => {
   const [showCompleteToast, setShowCompleteToast] = useState(false);
 
-  const dismissAlert = () => {
-    ionItemSlidingRef.current && ionItemSlidingRef.current.close();
-  }
-
   const addToCart = () => {
-    if (isInCart) {
-      removeFromCart();
-    } else {
-      onAddToCart(item.id);
-      setShowCompleteToast(true);
-      dismissAlert();
-    }
+    var cartItem: CartItem = {itemId: item.id, itemQty: 1}
+    onAddToCart(cartItem);
+    setShowCompleteToast(true);
   };
 
   const removeFromCart = () => {
-    onAddToCart(item.id);
-    onShowAlert('Remove from cart?', [
-      {
-        text: 'No',
-        handler: dismissAlert
-      },
-      {
-        text: 'Remove',
-        handler: () => {
-          onRemoveFromCart(item.id);
-          dismissAlert();
+    if (qty === 1){
+      onShowAlert('Remove from cart?', [
+        {
+          text: 'No',
+        },
+        {
+          text: 'Remove',
+          handler: () => {
+            onRemoveFromCart(item.id);
+          }
         }
-      }
-    ])
+      ])
+    }
+    else {
+      onRemoveFromCart(item.id)
+    }
   }
 
   return (
     <>
-      <IonItemSliding ref={ionItemSlidingRef}>
-        <IonItem>
-          <IonLabel className="ion-text-wrap">
-            <h2>
-              {item.item_name}
-              <span className="date">
-                <IonNote>₹ {item.item_price}
-                </IonNote>
-              </span>
-            </h2>
-            <h3>{item.item_weight}</h3>
-          </IonLabel>
-        </IonItem>
-        <IonItemOptions>
-          {isInCart ?
-            <IonItemOption color="danger" onClick={() => removeFromCart()}>
-              Remove
-              </IonItemOption> :
-            <IonItemOption color="favorite" onClick={addToCart}>
-              Add to Cart
-              </IonItemOption>
-          }
-        </IonItemOptions>
-      </IonItemSliding>
-
+      <IonCard>
+        <IonCardHeader className="ion-no-margin">
+          <IonCardTitle>
+            {item.item_name}
+          </IonCardTitle>
+          <IonCardSubtitle>
+            <IonGrid>
+              <IonRow>
+                <IonCol>
+                  <h6 className="ion-text-center ion-no-margin">Weight: {item.item_weight}</h6>
+                </IonCol>
+                <IonCol>
+                  <h6 className="ion-text-center ion-no-margin">₹ {item.item_price}</h6>
+                </IonCol>
+              </IonRow>
+            </IonGrid>
+          </IonCardSubtitle>
+        </IonCardHeader>
+        <IonCardContent className="ion-no-margin ion-no-padding">
+          <IonGrid>
+            <IonRow>
+              <IonCol>
+                {!isInCart && !qty ? 
+                  <IonButton fill="outline" color="success" className="ion-text-center ion-float-right ion-padding-end" onClick={addToCart}>Add to Cart</IonButton>
+                  :
+                  <IonGrid>
+                    <IonRow>
+                      <IonCol size="6"></IonCol>
+                      <IonCol className="ion-align-items-center">
+                        <IonIcon icon={removeCircleOutline}
+                          color="red"
+                          size="large"
+                          onClick={() => removeFromCart()} />
+                      </IonCol>
+                      <IonCol className="ion-align-items-center">
+                        <IonInput
+                          id="qtyInput"
+                          type="number"
+                          max="10"
+                          inputMode="numeric"
+                          value={qty}
+                          readonly={true} />
+                      </IonCol>
+                      <IonCol className="ion-align-items-center">
+                        <IonIcon
+                          icon={addCircleOutline}
+                          color="green"
+                          size="large"
+                          onClick={addToCart}
+                        />
+                      </IonCol>
+                    </IonRow>
+                  </IonGrid>
+                }
+              </IonCol>
+            </IonRow>
+          </IonGrid>
+        </IonCardContent>
+      </IonCard>
       <IonToast
         isOpen={showCompleteToast}
         message="Cart Modified"

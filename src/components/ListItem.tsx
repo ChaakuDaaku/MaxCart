@@ -35,7 +35,6 @@ const ListItem: React.FC<ListItemProps> = ({ item, onShowAlert, onAddToCart, onR
     var cartItem: CartItem = {itemId: item.id, itemQty: 1}
     onAddToCart(cartItem);
     setShowCompleteToast(true);
-
   };
 
   const removeFromCart = () => {
@@ -76,7 +75,7 @@ const ListItem: React.FC<ListItemProps> = ({ item, onShowAlert, onAddToCart, onR
           <IonGrid>
             <IonRow>
               <IonCol>
-                {!isInCart ?
+                {!isInCart && !qty ? 
                   <IonButton fill="outline" color="success" className="ion-text-center" expand="block" onClick={addToCart}>Add to Cart</IonButton>
                   :
                   <IonGrid>

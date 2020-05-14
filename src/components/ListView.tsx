@@ -55,7 +55,7 @@ const ListView: React.FC<ListViewProps> = ({ itemDataset, addToCart, removeFromC
     data = itemDataset
   }
 
-  function calcTotal(dataset: Array<Item>): number {
+  const calcTotal = (dataset: Array<Item>): number => {
     if (dataset === undefined || dataset.length === 0) {
       return 0;
     }
@@ -65,7 +65,7 @@ const ListView: React.FC<ListViewProps> = ({ itemDataset, addToCart, removeFromC
     }
   }
 
-  function findQty(item: Item): number {
+  const findQty = (item: Item): number => {
     var index: number = cartItems.findIndex(cartItem=>cartItem.itemId===item.id)
     if (index ===-1) {
       return 0;

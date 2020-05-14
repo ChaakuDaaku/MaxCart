@@ -14,15 +14,13 @@ export const sessionReducer = (state: ConfState, action: SessionsActions): ConfS
       return { ...state, searchText: action.searchText };
     }
     case 'add-to-cart': {
-      index = state.cart.findIndex(item => item.itemId === action.item.itemId)
-      if (index === -1) {
-        state.cart.push(action.item);
-        return state
+      if (state.cart.findIndex(item => item.itemId === action.item.itemId) === -1) {
+        action.item.itemQty = 1;
       }
       else {
-        state.cart[index].itemQty += 1;
-        return state;
+        state.cart.map(item => item.itemQty +=1)
       }
+      return { ...state, cart: [ ...(state.cart), action.item]};
     }
     case 'remove-from-cart': {
       index = state.cart.findIndex(item => item.itemId === action.itemId);

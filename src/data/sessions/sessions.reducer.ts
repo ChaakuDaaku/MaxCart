@@ -14,11 +14,8 @@ export const sessionReducer = (state: ConfState, action: SessionsActions): ConfS
       return { ...state, searchText: action.searchText };
     }
     case 'add-to-cart': {
-      if (state.cart.findIndex(item => item.itemId === action.item.itemId) === -1) {
-        action.item.itemQty = 1;
-      }
-      else {
-        state.cart.map(item => item.itemQty +=1)
+      if (state.cart.findIndex(item => item.itemId === action.item.itemId) !== -1) {
+        state.cart.forEach(item => {if(item.itemId === action.item.itemId) {item.itemQty++}} )
       }
       return { ...state, cart: [ ...(state.cart), action.item]};
     }

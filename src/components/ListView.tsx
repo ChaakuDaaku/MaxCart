@@ -66,7 +66,7 @@ const ListView: React.FC<ListViewProps> = ({ itemDataset, addToCart, removeFromC
 
   return (
     <>
-      {!isCartPage &&
+      {!isCartPage ?
         <IonPage>
           <IonToolbar>
             <IonButtons slot="start">
@@ -97,40 +97,42 @@ const ListView: React.FC<ListViewProps> = ({ itemDataset, addToCart, removeFromC
             ></IonAlert>
           </IonContent>
         </IonPage>
-      }
-      <IonToolbar>
-        <IonButtons slot="start">
-          <IonBackButton defaultHref="/tabs/home"></IonBackButton>
-        </IonButtons>
-        <IonButtons slot="end"></IonButtons>
-      </IonToolbar>
-      <IonContent fullscreen={true}>
-        <IonList>
-          {data.dataset.map((item, index: number) => (
-            <IonItemGroup key={index}>
-              <ListItem
-                item={item}
-                onShowAlert={handleShowAlert}
-                onAddToCart={addToCart}
-                onRemoveFromCart={removeFromCart}
-                isInCart={cartItems.indexOf(item.id) > -1}
-              />
-            </IonItemGroup>
-          ))}
-        </IonList>
-        <IonAlert
-          isOpen={showAlert}
-          header={alertHeader}
-          buttons={alertButtons}
-          onDidDismiss={() => setShowAlert(false)}
-        ></IonAlert>
-        <IonFooter translucent={true} className="ion-padding-bottom ion-margin-bottom">
-          <IonToolbar color="success">
-            <h3 className="ion-float-right ion-padding-end ion-justify-content-end"> Total: ₹ {calcTotal(data.dataset)} </h3>
+      :
+        <>
+          <IonToolbar>
+            <IonButtons slot="start">
+              <IonBackButton defaultHref="/tabs/home"></IonBackButton>
+            </IonButtons>
+            <IonButtons slot="end"></IonButtons>
           </IonToolbar>
-        </IonFooter>
-      </IonContent>
-
+          <IonContent fullscreen={true}>
+            <IonList>
+              {data.dataset.map((item, index: number) => (
+                <IonItemGroup key={index}>
+                  <ListItem
+                    item={item}
+                    onShowAlert={handleShowAlert}
+                    onAddToCart={addToCart}
+                    onRemoveFromCart={removeFromCart}
+                    isInCart={cartItems.indexOf(item.id) > -1}
+                  />
+                </IonItemGroup>
+              ))}
+            </IonList>
+            <IonAlert
+              isOpen={showAlert}
+              header={alertHeader}
+              buttons={alertButtons}
+              onDidDismiss={() => setShowAlert(false)}
+            ></IonAlert>
+            <IonFooter translucent={true} className="ion-padding-bottom ion-margin-bottom">
+              <IonToolbar color="success">
+                <h3 className="ion-float-right ion-padding-end ion-justify-content-end"> Total: ₹ {calcTotal(data.dataset)} </h3>
+              </IonToolbar>
+            </IonFooter>
+          </IonContent>
+        </>
+      }
     </>
   )
 }

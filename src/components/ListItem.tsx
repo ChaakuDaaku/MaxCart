@@ -38,17 +38,22 @@ const ListItem: React.FC<ListItemProps> = ({ item, onShowAlert, onAddToCart, onR
   };
 
   const removeFromCart = () => {
-    onShowAlert('Remove from cart?', [
-      {
-        text: 'No',
-      },
-      {
-        text: 'Remove',
-        handler: () => {
-          onRemoveFromCart(item.id);
+    if (qty === 1){
+      onShowAlert('Remove from cart?', [
+        {
+          text: 'No',
+        },
+        {
+          text: 'Remove',
+          handler: () => {
+            onRemoveFromCart(item.id);
+          }
         }
-      }
-    ])
+      ])
+    }
+    else {
+      onRemoveFromCart(item.id)
+    }
   }
 
   return (
@@ -76,32 +81,31 @@ const ListItem: React.FC<ListItemProps> = ({ item, onShowAlert, onAddToCart, onR
             <IonRow>
               <IonCol>
                 {!isInCart && !qty ? 
-                  <IonButton fill="outline" color="success" className="ion-text-center" expand="block" onClick={addToCart}>Add to Cart</IonButton>
+                  <IonButton fill="outline" color="success" className="ion-text-center ion-float-right ion-padding-end" onClick={addToCart}>Add to Cart</IonButton>
                   :
                   <IonGrid>
                     <IonRow>
-                      <IonCol>
+                      <IonCol size="6"></IonCol>
+                      <IonCol className="ion-align-items-center">
                         <IonIcon icon={removeCircleOutline}
                           color="red"
                           size="large"
-                          className="ion-float-right ion-padding-end ion-justify-content-end"
                           onClick={() => removeFromCart()} />
                       </IonCol>
-                      <IonCol>
+                      <IonCol className="ion-align-items-center">
                         <IonInput
                           id="qtyInput"
                           type="number"
                           max="10"
                           inputMode="numeric"
                           value={qty}
-                          className="ion-text-center" />
+                          readonly={true} />
                       </IonCol>
-                      <IonCol>
+                      <IonCol className="ion-align-items-center">
                         <IonIcon
                           icon={addCircleOutline}
                           color="green"
                           size="large"
-                          className="ion-float-right ion-padding-end ion-justify-content-end"
                           onClick={addToCart}
                         />
                       </IonCol>

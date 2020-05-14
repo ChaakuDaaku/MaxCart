@@ -45,8 +45,8 @@ export const getListItems = createSelector(
 
 export const getCartItems = createSelector(
   getListItems, getCartItemIds,
-  (item_group, cartItemIds) => {
-    const cartItem = item_group.dataset.filter(s => cartItemIds.indexOf(s.id) > -1)
+  (item_group, cartItems) => {
+    const cartItem = item_group.dataset.filter(s => cartItems.findIndex(cI=>cI.itemId===s.id) > -1)
     return {
       dataset: cartItem
     } as Items;

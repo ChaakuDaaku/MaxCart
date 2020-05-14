@@ -1,6 +1,7 @@
 import { ActionType } from "../../utils/types";
 import { getConfData } from "../dataApi";
 import { ConfState } from "./conf.state";
+import { CartItem } from "../../models/CartItems";
 
 export const loadConfData = () => async (dispatch: React.Dispatch<any>) => {
   dispatch(setLoading(true));
@@ -24,9 +25,9 @@ export const setSearchText = (searchText?: string) => ({
   searchText
 } as const);
 
-export const addToCart = (itemId: number) => ({
+export const addToCart = (item: CartItem) => ({
   type: 'add-to-cart',
-  itemId
+  item
 } as const);
 
 export const removeFromCart = (itemId: number) => ({
